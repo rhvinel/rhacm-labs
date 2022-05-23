@@ -6,21 +6,7 @@ metadata:
   namespace: etherpad
 spec:
   type: GitHub
-  pathname: https://github.com/rhvinel/rhacm-labs.git
----
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: PlacementRule
-metadata:
-  name: dev-clusters
-  namespace: etherpad
-spec:
-  clusterConditions:
-    - type: ManagedClusterConditionAvailable
-      status: "True"
-  clusterSelector:
-    matchLabels:
-      environment: dev
+  pathname: https://github.com/redhat-gpte-devopsautomation/rhacm-labs.git
 ---
 apiVersion: app.k8s.io/v1beta1
 kind: Application
@@ -50,8 +36,7 @@ metadata:
     apps.open-cluster-management.io/github-path: resources/etherpad
 spec:
   channel: etherpad/etherpad-app-latest
- placement:
+  placement:
     placementRef:
       kind: PlacementRule
       name: dev-clusters
-
